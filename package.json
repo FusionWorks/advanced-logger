@@ -1,0 +1,20 @@
+{
+  "name": "logger",
+  "version": "0.0.0",
+  "description": "Advanced console logger which replace console.log adding a lot more configurability.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "tsc",
+    "typescript",
+    "log",
+    "console",
+    "logger",
+    "advanced"
+  ],
+  "author": "GrigoreME",
+  "license": "ISC"
+}
