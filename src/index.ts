@@ -153,6 +153,15 @@ export class Console implements OriginalConsole {
   markTimeline(...args: any[]) {
     this.old_console['markTimeline'](...args);
   }
+
+  timeLog(...args: any[]) {
+    this.old_console.timeLog(...args);
+  }
+
+  countReset(...args: any[]) {
+    this.old_console.countReset(...args);
+  }
+  Console: NodeJS.ConsoleConstructor | any;
   // GARBAGE END
 
   private init() {

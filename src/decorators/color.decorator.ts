@@ -16,9 +16,9 @@ export function Colorfull() {
     const originalMethod = descriptor.value;
     descriptor.value = function () {
       let args = [...arguments];
-      const css = this.configuration[propertyKey].css;
+      const { css } = this.configuration[propertyKey] || { css: undefined };
       if (css) {
-        if (isNode) {
+        if (isNode()) {
           this.old_console.warn('Cannot apply css over NodeJs.');
           return;
         }
