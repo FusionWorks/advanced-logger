@@ -1,5 +1,7 @@
-const { Console } = require('./dist/index');
+const { Console } = require('@fusionworks/advanced-logger');
+
 const console = new Console({ log: { css: 'background:red;color:#fff' } });
+
 console.info('ROUND 1, log disabled');
 console.log('thats an disabled log');
 console.warn('thats an enabled warn');
