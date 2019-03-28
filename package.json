@@ -13,6 +13,11 @@
     "prerelease": "npm whoami && npm run patch && npm run build",
     "release": "npm publish dist --access public"
   },
+  "homepage": "https://github.com/FusionWorks/advanced-logger",
+  "repository": {
+    "url": "https://github.com/FusionWorks/advanced-logger",
+    "type": "git"
+  },
   "keywords": [
     "npm",
     "tsc",
