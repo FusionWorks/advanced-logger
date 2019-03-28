@@ -7,7 +7,7 @@
   "scripts": {
     "rollup": "rollup",
     "build": "rollup -c",
-    "postbuild": "node lib/copy_package",
+    "postbuild": "node lib/copy_package && node lib/copy_readme",
     "watch": "rollup -cw",
     "patch": "npm version patch",
     "prerelease": "npm whoami && npm run patch && npm run build",
