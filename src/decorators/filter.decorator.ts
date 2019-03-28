@@ -8,11 +8,11 @@ export function FilterVisible() {
   * Applies only over logging methods.
   */
   function visible(methodName: 'debug' | 'log' | 'info' | 'error' | 'warn') {
-    const method: MethodConfiguration = this.configuration[methodName];
-    if (!method || typeof method === 'boolean') {
-      return method !== false;
+    const methodConfig: MethodConfiguration = this.configuration[methodName];
+    if (typeof methodConfig === 'boolean') {
+      return methodConfig;
     }
-    return !method.hide;
+    return !(methodConfig || {}).hide;
   }
 
   return function (target?: any, propertyKey?: string | symbol, descriptor?: PropertyDescriptor) {

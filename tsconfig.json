@@ -6,6 +6,7 @@
     "declaration": false,
     "emitDecoratorMetadata": false,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": false,
     "target": "es2015",
     "strict": false,
     "typeRoots": [

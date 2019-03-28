@@ -3,6 +3,8 @@ export class MethodAdvancedConfiguration {
     public hide?: boolean,
     public css?: string,
     public customHandles?: any,
+    public prefix?: string | string[],
+    public sufix?: string | string[],
   ) { }
 }
 
