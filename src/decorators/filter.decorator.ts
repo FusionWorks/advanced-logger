@@ -1,4 +1,4 @@
-import { MethodConfiguration } from 'models/configuration';
+import { MethodConfiguration } from '../models/configuration';
 
 /**
  * Check whatever command should be triggered or not.
@@ -22,7 +22,7 @@ export function FilterVisible() {
       if (!visible.apply(this, [propertyKey])) {
         return;
       }
-      originalMethod.apply(this, args);
+      return originalMethod.apply(this, args);
     };
     return descriptor;
   }

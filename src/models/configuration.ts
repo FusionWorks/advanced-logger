@@ -9,7 +9,6 @@ export class MethodAdvancedConfiguration {
 export type MethodConfiguration = undefined | boolean | MethodAdvancedConfiguration;
 
 export class ConfigurationModel {
-  public overrideConsole: boolean = true;
   public environment?: string;
   public debug?: MethodConfiguration;
   public info?: MethodConfiguration;
