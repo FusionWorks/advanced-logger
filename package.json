@@ -11,7 +11,7 @@
     "watch": "rollup -cw",
     "patch": "npm version patch",
     "prerelease": "npm whoami && npm run patch && npm run build",
-    "release": "npm publish dist --access public --dry-run"
+    "release": "npm publish dist --access public"
   },
   "keywords": [
     "npm",
