@@ -1,5 +1,8 @@
 import { MethodConfiguration } from 'models/configuration';
 
+/**
+ * Check whatever command should be triggered or not.
+ */
 export function FilterVisible() {
   /**
   * Applies only over logging methods.

@@ -9,6 +9,7 @@ export class Console implements OriginalConsole {
   memory: any;
   Console: NodeJS.ConsoleConstructor | any;
 
+  // Used by decorators for now
   private old_console: OriginalConsole = console;
 
   constructor(private configuration: ConfigurationModel | ObjectLiteral = {}) {
@@ -25,7 +26,7 @@ export class Console implements OriginalConsole {
     }
   }
 
-  update(configuration) {
+  update(configuration = {}) {
     this.configuration = configuration;
     this.init();
   }

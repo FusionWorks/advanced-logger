@@ -1,3 +1,7 @@
+/**
+ * Convert all given args to colorfull ones.
+ * Example( ['hello world'] => ['%chello world', {given_css}] )
+ */
 export function Colorfull() {
   function browserOutput(css, args) {
     return args.reduce((agg, arg) => {
