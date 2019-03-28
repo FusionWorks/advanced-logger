@@ -4,7 +4,9 @@
   "description": "Advanced console logger which replace console.log adding a lot more configurability.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "rollup": "rollup",
+    "build": "rollup -c",
+    "watch": "rollup -cw"
   },
   "keywords": [
     "npm",
@@ -16,5 +18,18 @@
     "advanced"
   ],
   "author": "GrigoreME",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "tslib": "^1.9.3",
+    "typescript": "^3.3.4000",
+    "@types/node": "^11.12.0"
+  },
+  "dependencies": {}
 }
