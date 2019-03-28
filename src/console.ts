@@ -15,7 +15,7 @@ export class Console extends AbstractConsole {
   }
 
   update(configuration = {}) {
-    this.configuration = configuration;
+    Object.assign(this.configuration, configuration);
     this.init();
   }
 
