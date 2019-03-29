@@ -7,10 +7,10 @@ import { IsNode } from '../helpers/isNode';
 export function Colorfull() {
   function transformOutput(css, args) {
     return args.reduce((agg, arg) => {
-      if (typeof arg === 'string') {
+      if (typeof arg === 'string' || typeof arg === 'number') {
         return [...agg, `%c${arg}`, css];
       }
-      return agg;
+      return [...agg, arg];
     }, []);
   }
 
