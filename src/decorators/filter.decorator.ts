@@ -8,7 +8,13 @@ export function FilterVisible() {
   * Applies only over logging methods.
   */
   function visible(methodName: 'debug' | 'log' | 'info' | 'error' | 'warn') {
-    const methodConfig: MethodConfiguration = this.configuration[methodName];
+    const configuration = this.configuration || {};
+    const methodConfig: MethodConfiguration = configuration[methodName];
+    // Take global configuration in case of undefined custom configuration
+    const isObjectButClean = typeof methodConfig === 'object' && JSON.stringify(methodConfig) === '{}';
+    if (methodConfig === undefined || isObjectButClean) {
+      return !configuration.hide;
+    }
     if (typeof methodConfig === 'boolean') {
       return methodConfig;
     }

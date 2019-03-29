@@ -2,7 +2,6 @@ export class MethodAdvancedConfiguration {
   constructor(
     public hide?: boolean,
     public css?: string,
-    public customHandles?: any,
     public prefix?: string | string[],
     public sufix?: string | string[],
   ) { }
@@ -10,14 +9,16 @@ export class MethodAdvancedConfiguration {
 
 export type MethodConfiguration = undefined | boolean | MethodAdvancedConfiguration;
 
-export class ConfigurationModel {
+export class ConfigurationModel extends MethodAdvancedConfiguration {
   public environment?: string;
   public debug?: MethodConfiguration;
   public info?: MethodConfiguration;
   public log?: MethodConfiguration;
   public error?: MethodConfiguration;
   public warn?: MethodConfiguration;
-  public customHandles?: any;
 
-  constructor(config?: ConfigurationModel) { Object.assign(this, config || {}); }
+  constructor(config?: ConfigurationModel) {
+    super();
+    Object.assign(this, config || {});
+  }
 }

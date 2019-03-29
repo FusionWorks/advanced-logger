@@ -5,16 +5,40 @@ import { FilterVisible } from './decorators/filter.decorator';
 import { Colorfull } from './decorators/color.decorator';
 import { DoFromConsole } from './decorators/do-console.decotrator';
 import { PrefixSufix } from './decorators/prefix-sufix.decorator';
-const merge = require('lodash/merge');
+const mergeWith = require('lodash/mergeWith');
 
 export class Console extends AbstractConsole {
   constructor(private configuration: ConfigurationModel | ObjectLiteral = {}) {
     super();
   }
 
-  update(configuration = {}) {
-    merge(this.configuration, configuration);
+  /**
+   * Join old configuration with new one.
+   * If {forced} is activeted it replace instead of join.
+   */
+  update(configuration = {}, forced?: boolean) {
+    if (forced) {
+      this.configuration = configuration;
+      this.init();
+      return;
+    }
+    const allowUndefined = (_old, _new) => {
+      if (_new === undefined) {
+        return null;
+      }
+    };
+    mergeWith(this.configuration, configuration, allowUndefined);
     this.init();
+  }
+
+  /**
+   * Returns new instance of console with given configuration.
+   */
+  standalone(configuration = {}, forced?: boolean) {
+    const clone = Object.assign({}, this);
+    Object.setPrototypeOf(clone, Console.prototype);
+    clone.update(configuration, forced);
+    return clone;
   }
 
   // LOGGING START
@@ -47,6 +71,6 @@ export class Console extends AbstractConsole {
   @PrefixSufix()
   @DoFromConsole()
   info() { }
-  // LOGGING END 
+  // LOGGING END
 }
 

@@ -8,12 +8,11 @@ export class AbstractConsole {
   protected old_console: WindowConsole | Console;
 
   constructor() {
+    this.old_console = console;
     this.init();
   }
 
-  protected init() {
-    this.old_console = console;
-  }
+  protected init() { }
 
   @DoFromConsole()
   public assert(condition?: boolean, message?: string, ...data: any[]): void { }

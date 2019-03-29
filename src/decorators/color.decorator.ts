@@ -5,7 +5,7 @@ import { IsNode } from '../helpers/isNode';
  * Example( ['hello world'] => ['%chello world', {given_css}] )
  */
 export function Colorfull() {
-  function browserOutput(css, args) {
+  function transformOutput(css, args) {
     return args.reduce((agg, arg) => {
       if (typeof arg === 'string') {
         return [...agg, `%c${arg}`, css];
@@ -18,15 +18,13 @@ export function Colorfull() {
     const originalMethod = descriptor.value;
     descriptor.value = function () {
       let args = [...arguments];
-      const { css } = this.configuration[propertyKey] || { css: undefined };
-      if (css) {
-        if (IsNode()) {
-          this.old_console.warn('Cannot apply css over NodeJs.');
-          return;
-        }
-        return originalMethod.apply(this, browserOutput(css, args));
+      // Node cannot have css.
+      if (IsNode()) {
+        return originalMethod.apply(this, args);
       }
-      return originalMethod.apply(this, args);
+      const methodConfig = this.configuration[propertyKey] || {};
+      const css = methodConfig.css || this.configuration.css || undefined;
+      return originalMethod.apply(this, transformOutput(css, args));
     };
     return descriptor;
   }

@@ -3,17 +3,20 @@
  * Example( ['hello world'] => ['%chello world', {given_css}] )
  */
 export function PrefixSufix() {
-  const onlyArray = (val) => Array.isArray(val) ? val : [val];
+  const toArray = (val) => Array.isArray(val) ? val : [val];
+
   return function (target?: any, propertyKey?: string | symbol, descriptor?: PropertyDescriptor) {
     const originalMethod = descriptor.value;
     descriptor.value = function () {
       let args = [...arguments];
-      const { prefix, sufix } = this.configuration[propertyKey] || { prefix: undefined, sufix: undefined };
+      const methodConfig = this.configuration[propertyKey] || {};
+      const prefix = methodConfig.prefix || this.configuration.prefix || undefined;
+      const sufix = methodConfig.sufix || this.configuration.sufix || undefined;
       if (prefix) {
-        args = [...onlyArray(prefix), ...args];
+        args = [...toArray(prefix), ...args];
       }
       if (sufix) {
-        args = [...args, ...onlyArray(sufix)];
+        args = [...args, ...toArray(sufix)];
       }
       return originalMethod.apply(this, args);
     };

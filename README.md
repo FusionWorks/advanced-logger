@@ -13,10 +13,10 @@ It was built for modern browsers using _TypeScript_.
 - Handle large amount of logs by one configuration.
 - Expressive configuration for each method apart.
 - Custom styles for each method apart.
-
-## Features todo
 - Custom prefix/postfix for each method apart.
 - Custom standalon configuration for unique call.
+
+## Features todo
 - AoT Compilation Support
 - Handle arrays by configuration and display them as `console.table` instead of `console.log`
 
@@ -38,3 +38,11 @@ console.info('thats just a info');
 console.error('thats just a error');
 console.debug('thats just a debug');
 ```
+
+## Testing
+You can test it out by running
+- `cd demo`
+- `npm install`
+- `node index` for latest released version.  
+OR
+- `node demo` for current source code.
