@@ -10,7 +10,6 @@ export class MethodAdvancedConfiguration {
 export type MethodConfiguration = undefined | boolean | MethodAdvancedConfiguration;
 
 export class ConfigurationModel extends MethodAdvancedConfiguration {
-  public environment?: string;
   public debug?: MethodConfiguration;
   public info?: MethodConfiguration;
   public log?: MethodConfiguration;
