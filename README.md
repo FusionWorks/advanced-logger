@@ -30,7 +30,7 @@ Get to some entry point at your project and init by next syntax:
 ```JAVASCRIPT
 import { Console } from '@fusionworks/advanced-logger';
 
-const console = window.console = new Console();
+console = new Console();
 
 console.log('thats just a log');
 console.warn('thats just a warn');
