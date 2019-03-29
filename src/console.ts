@@ -22,8 +22,8 @@ export class Console extends AbstractConsole {
       this.init();
       return;
     }
-    const allowUndefined = (_old, _new) => {
-      if (_new === undefined) {
+    const allowUndefined = (oldVal: any, newVal: any) => {
+      if (newVal === undefined) {
         return null;
       }
     };
@@ -73,4 +73,3 @@ export class Console extends AbstractConsole {
   info() { }
   // LOGGING END
 }
-

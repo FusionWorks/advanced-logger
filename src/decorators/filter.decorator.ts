@@ -3,6 +3,7 @@ import { MethodConfiguration } from '../models/configuration';
 /**
  * Check whatever command should be triggered or not.
  */
+// tslint:disable-next-line: function-name
 export function FilterVisible() {
   /**
   * Applies only over logging methods.
@@ -11,7 +12,8 @@ export function FilterVisible() {
     const configuration = this.configuration || {};
     const methodConfig: MethodConfiguration = configuration[methodName];
     // Take global configuration in case of undefined custom configuration
-    const isObjectButClean = typeof methodConfig === 'object' && JSON.stringify(methodConfig) === '{}';
+    const isObjectButClean = typeof methodConfig === 'object'
+      && JSON.stringify(methodConfig) === '{}';
     if (methodConfig === undefined || isObjectButClean) {
       return !configuration.hide;
     }
@@ -31,5 +33,5 @@ export function FilterVisible() {
       return originalMethod.apply(this, args);
     };
     return descriptor;
-  }
-};
+  };
+}

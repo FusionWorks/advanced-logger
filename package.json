@@ -11,7 +11,8 @@
     "watch": "rollup -cw",
     "patch": "npm version patch",
     "prerelease": "npm whoami && npm run patch && npm run build",
-    "release": "npm publish dist --access public"
+    "release": "npm publish dist --access public",
+    "tslint": "tslint ./src/index.ts --project tsconfig.json"
   },
   "homepage": "https://github.com/FusionWorks/advanced-logger",
   "repository": {
@@ -39,6 +40,8 @@
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-typescript2": "^0.20.1",
     "tslib": "^1.9.3",
+    "tslint": "^5.14.0",
+    "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.3.4000"
   },
   "dependencies": {

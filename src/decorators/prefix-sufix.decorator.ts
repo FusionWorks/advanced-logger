@@ -2,8 +2,9 @@
  * Convert all given args to colorfull ones.
  * Example( ['hello world'] => ['%chello world', {given_css}] )
  */
+// tslint:disable-next-line: function-name
 export function PrefixSufix() {
-  const toArray = (val) => Array.isArray(val) ? val : [val];
+  const toArray = (val: any) => Array.isArray(val) ? val : [val];
 
   return function (target?: any, propertyKey?: string | symbol, descriptor?: PropertyDescriptor) {
     const originalMethod = descriptor.value;
@@ -21,5 +22,5 @@ export function PrefixSufix() {
       return originalMethod.apply(this, args);
     };
     return descriptor;
-  }
-};
+  };
+}

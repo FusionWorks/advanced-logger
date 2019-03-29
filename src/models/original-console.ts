@@ -2,13 +2,14 @@ import { DoFromConsole } from '../decorators/do-console.decotrator';
 
 export class AbstractConsole {
   public memory: any;
+  // tslint:disable-next-line: variable-name
   public Console: NodeJS.ConsoleConstructor | any;
 
   // Used by decorators for now
-  protected old_console: WindowConsole | Console;
+  protected consoleKeeper: WindowConsole | Console;
 
   constructor() {
-    this.old_console = console;
+    this.consoleKeeper = console;
     this.init();
   }
 
