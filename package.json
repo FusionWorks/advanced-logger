@@ -12,7 +12,8 @@
     "patch": "npm version patch",
     "prerelease": "npm whoami && npm run patch && npm run build",
     "release": "npm publish dist --access public",
-    "tslint": "tslint ./src/index.ts --project tsconfig.json"
+    "tslint": "tslint ./src/index.ts --project tsconfig.json",
+    "test": "node lib/test"
   },
   "homepage": "https://github.com/FusionWorks/advanced-logger",
   "repository": {
