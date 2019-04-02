@@ -23,7 +23,6 @@ deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   skip_cleanup: $SKIP_CLEANUP
-  all_branches: true
 addons:
   apt:
     packages:
@@ -34,3 +33,10 @@ addons:
       - build-essential
       - g++
 after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+
+# Trigger a push build on master and greenkeeper branches + PRs build on every branches
+# Avoid double build on PRs (See https://github.com/travis-ci/travis-ci/issues/1147)
+branches:
+  only:
+    - master
+    - /^greenkeeper.*$/
