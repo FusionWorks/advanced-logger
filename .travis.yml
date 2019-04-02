@@ -3,27 +3,35 @@ node_js:
   - '10'
 dist: dist
 sudo: required
-branches:
-  only:
-    - master
-    - /^greenkeeper/.*$/
 script:
   - npm run lint
-  - npm install
+  - npm install --no-save
   - npm run test
   - npm run build
   - node demo/local
-  # - npm run test-headless
+cache:
+  pip: true
+  directories:
+    - node_modules
+before_install:
+  - pip2.7 install -U --user paramiko fabric PyYAML pytest requests pytest-xdist filelock
+  - if [[ "$TRAVIS_PULL_REQUEST" = false && $TRAVIS_BRANCH == "master" ]]; then
+      echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc;
+    fi
 before_deploy:
   # Set up git user name and tag this commit
   - git config --local user.name "grigoreme"
   - git config --local user.email "grigore997@gmail.com"
-  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-  - git tag $TRAVIS_TAG
+  # - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  # - git tag $TRAVIS_TAG
+  - export NPM_USERNAME=$NPM_USER
+  - npm run release
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   skip_cleanup: $SKIP_CLEANUP
+  on:
+    branch: master
 addons:
   apt:
     packages:
@@ -33,11 +41,12 @@ addons:
       - libgif-dev
       - build-essential
       - g++
-after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+after_script:
+  - NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 
 # Trigger a push build on master and greenkeeper branches + PRs build on every branches
 # Avoid double build on PRs (See https://github.com/travis-ci/travis-ci/issues/1147)
 branches:
   only:
     - master
-    - /^greenkeeper.*$/
+    - /^greenkeeper/.*$/
