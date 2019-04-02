@@ -7,12 +7,12 @@ branches:
   only:
     - master
     - /^greenkeeper/.*$/
-    - npm install
-    - npm run test
-    - npm run build
-    - node demo/local
 script:
   - npm run tslint
+  - npm install
+  - npm run test
+  - npm run build
+  - node demo/local
   # - npm run test-headless
 before_deploy:
   # Set up git user name and tag this commit
