@@ -10,7 +10,7 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@fusionworks/advanced-logger": "^0.0.5",
+    "@fusionworks/advanced-logger": "^0.0.9",
     "tslib": "^1.9.3",
     "typescript": "^3.3.4000",
     "@types/node": "^11.12.0"
