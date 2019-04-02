@@ -46,30 +46,30 @@ export class Console extends AbstractConsole {
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  log() { }
+  log() {}
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  warn() { }
+  warn() {}
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  error() { }
+  error() {}
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  debug() { }
+  debug() {}
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  info() { }
+  info() {}
   // LOGGING END
 }

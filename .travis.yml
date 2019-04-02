@@ -1,27 +1,36 @@
 language: node_js
 node_js:
-  - "10"
+  - '10'
 dist: dist
 sudo: required
 branches:
   only:
-  - master
-before_script:
-  - npm install -g @angular/cli
+    - master
+# before_script:
+#   - npm install -g @angular/cli
 script:
-  - ng lint
+  - npm run tslint
   # - npm run test-headless
   # - ng build --prod --base-href https://t-palmer.github.io/travis-demo/
 before_deploy:
-    # Set up git user name and tag this commit
-    - git config --local user.name "grigoreme"
-    - git config --local user.email "grigore997@gmail.com"
-    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-    - git tag $TRAVIS_TAG
+  # Set up git user name and tag this commit
+  - git config --local user.name "grigoreme"
+  - git config --local user.email "grigore997@gmail.com"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
-  file: $FILE_UPLOAD
   skip_cleanup: $SKIP_CLEANUP
   on:
     branch: master
+addons:
+  apt:
+    packages:
+      - libcairo2-dev
+      - libjpeg8-dev
+      - libpango1.0-dev
+      - libgif-dev
+      - build-essential
+      - g++
+after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
