@@ -2,7 +2,7 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/FusionWorks/advanced-logger.svg?label=Version)
 [![npm downloads](https://img.shields.io/npm/dm/@fusionworks/advanced-logger.svg)](https://npmjs.org/@fusionworks/advanced-logger)
-[![Coverage Status](https://coveralls.io/repos/github/grigoreme/advanced-logger/badge.svg?branch=master)](https://coveralls.io/github/grigoreme/advanced-logger?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/grigoreme/advanced-logger/badge.svg?branch=master)](https://coveralls.io/github/grigoreme/advanced-logger?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/grigoreme/advanced-logger.svg)](https://greenkeeper.io/)
 
 Advanced logger which can replace default console but are higly customizable.
 
