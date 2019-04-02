@@ -22,8 +22,7 @@ deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   skip_cleanup: $SKIP_CLEANUP
-  on:
-    branch: master
+  all_branches: true
 addons:
   apt:
     packages:
