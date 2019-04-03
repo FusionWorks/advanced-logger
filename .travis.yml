@@ -27,7 +27,7 @@ before_deploy:
 deploy:
   provider: pages
   skip_cleanup: true
-  api_key: $GITHUB_TOKEN
+  github_token: $GITHUB_TOKEN
   keep_history: true
   target-branch: master
   on:
