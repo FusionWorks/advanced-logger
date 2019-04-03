@@ -22,14 +22,13 @@ before_deploy:
   # Set up git user name and tag this commit
   - git config --local user.name "grigoreme"
   - git config --local user.email "grigore997@gmail.com"
-  # - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-  # - git tag $TRAVIS_TAG
   - export NPM_USERNAME=$NPM_USER
   - npm run release
 deploy:
-  provider: releases
-  api_key: $GITHUB_TOKEN
-  skip_cleanup: $SKIP_CLEANUP
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
   on:
     branch: master
 addons:
