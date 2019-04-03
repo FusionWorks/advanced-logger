@@ -1,6 +1,6 @@
 {
   "name": "@fusionworks/advanced-logger",
-  "version": "0.0.67",
+  "version": "0.0.68",
   "private": false,
   "description": "Advanced console logger which replace console.log adding a lot more configurability.",
   "main": "dist/index.js",
