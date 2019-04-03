@@ -25,10 +25,11 @@ before_deploy:
   - export NPM_USERNAME=$NPM_USER
   - npm run release
 deploy:
-  provider: releases
+  provider: pages
   skip_cleanup: true
   api_key: $GITHUB_TOKEN
   keep_history: true
+  target-branch: master
   on:
     branch: master
 addons:
