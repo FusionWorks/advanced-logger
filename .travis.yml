@@ -5,7 +5,7 @@ dist: dist
 sudo: required
 script:
   - npm run lint
-  - npm install --no-save
+  - npm ci
   - npm run test
   - npm run build
   - node demo/local
@@ -13,37 +13,19 @@ cache:
   pip: true
   directories:
     - node_modules
-before_install:
-  - pip2.7 install -U --user paramiko fabric PyYAML pytest requests pytest-xdist filelock
+before_deploy:
   - if [[ "$TRAVIS_PULL_REQUEST" = false && $TRAVIS_BRANCH == "master" ]]; then
       echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc;
     fi
-before_deploy:
-  # Set up git user name and tag this commit
-  - git config --local user.name "grigoreme"
-  - git config --local user.email "grigore997@gmail.com"
-  - export NPM_USERNAME=$NPM_USER
-  - npm run release
 deploy:
-  provider: pages
+  provider: script
+  script: bash scripts/publish.sh
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  target-branch: master
+  target-branch: $TRAVIS_BRANCH
   on:
-    branch: master
-addons:
-  apt:
-    packages:
-      - libcairo2-dev
-      - libjpeg8-dev
-      - libpango1.0-dev
-      - libgif-dev
-      - build-essential
-      - g++
-after_script:
-  - NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-
+    branches:
+      only:
+        - master
 # Trigger a push build on master and greenkeeper branches + PRs build on every branches
 # Avoid double build on PRs (See https://github.com/travis-ci/travis-ci/issues/1147)
 branches:
