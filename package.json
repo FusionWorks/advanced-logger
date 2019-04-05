@@ -1,6 +1,6 @@
 {
   "name": "@fusionworks/advanced-logger",
-  "version": "0.0.9",
+  "version": "0.0.82",
   "private": false,
   "description": "Advanced console logger which replace console.log adding a lot more configurability.",
   "main": "dist/index.js",
@@ -9,10 +9,11 @@
     "build": "rollup -c",
     "postbuild": "node lib/copy_package && node lib/copy_readme",
     "watch": "rollup -cw",
-    "patch": "npm version patch",
+    "patch": "npm version patch -m \"[skip travis] Release version: %s\"",
     "prerelease": "npm whoami && npm run patch && npm run build",
     "release": "npm publish dist --access public",
-    "tslint": "tslint ./src/index.ts --project tsconfig.json"
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "test": "node lib/test"
   },
   "homepage": "https://github.com/FusionWorks/advanced-logger",
   "repository": {
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.123",
     "@types/node": "^11.12.0",
+    "rollup": "^1.8.0",
     "rollup-plugin-commonjs": "^9.2.2",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.0.1",
