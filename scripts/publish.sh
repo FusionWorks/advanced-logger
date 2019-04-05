@@ -14,7 +14,7 @@ elif [[ $TRAVIS_PULL_REQUEST = false && $TRAVIS_BRANCH == "master" ]]; then
     echo "Skip deploy as last commit was made by travis."
   fi
   npm run release
-  git push "https://${GITHUB_TOKEN}@github.com/grigoreme/advanced-logger.git" master
+  git push "https://${GITHUB_TOKEN}@github.com/@fusionworks/advanced-logger.git" master
 
 	git checkout -
 else
