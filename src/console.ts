@@ -5,7 +5,7 @@ import { FilterVisible } from './decorators/filter.decorator';
 import { Colorfull } from './decorators/color.decorator';
 import { DoFromConsole } from './decorators/do-console.decotrator';
 import { PrefixSufix } from './decorators/prefix-sufix.decorator';
-const mergeWith = require('lodash/mergeWith');
+import { mergeWith } from './helpers/mergeWith';
 
 export class Console extends AbstractConsole {
   constructor(private configuration: ConfigurationModel | ObjectLiteral = {}) {
@@ -46,30 +46,30 @@ export class Console extends AbstractConsole {
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  log() {}
+  log() { }
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  warn() {}
+  warn() { }
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  error() {}
+  error() { }
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  debug() {}
+  debug() { }
 
   @FilterVisible()
   @Colorfull()
   @PrefixSufix()
   @DoFromConsole()
-  info() {}
+  info() { }
   // LOGGING END
 }
