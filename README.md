@@ -1,6 +1,6 @@
 # @FusionWorks/advanced-logger
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/FusionWorks/advanced-logger.svg?label=Version)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/FusionWorks/advanced-logger.svg?label=Version)](https://github.com/FusionWorks/advanced-logger) 
 [![npm downloads](https://img.shields.io/npm/dm/@fusionworks/advanced-logger.svg)](https://npmjs.org/@fusionworks/advanced-logger)
 [![Coverage Status](https://coveralls.io/repos/github/grigoreme/advanced-logger/badge.svg?branch=master)](https://coveralls.io/github/grigoreme/advanced-logger?branch=master) 
 
