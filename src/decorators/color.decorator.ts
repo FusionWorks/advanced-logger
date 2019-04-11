@@ -10,7 +10,11 @@ export function Colorfull() {
     if (!css) {
       return args;
     }
-    return [`%c${args[0]} %s`, css, ...args.slice(1)];
+    const allButFirst = args.slice(1);
+    const colorKeeper = args.length < 2 ? '' : allButFirst.reduce((agg) => {
+      return `${agg} %s`;
+    }, '');
+    return [`%c${args[0]}${colorKeeper}`, css, ...allButFirst];
   }
 
   return function (target?: any, propertyKey?: string | symbol, descriptor?: PropertyDescriptor) {
