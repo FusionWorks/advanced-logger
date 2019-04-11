@@ -7,13 +7,10 @@ import { isNode } from '../helpers/isNode';
 // tslint:disable-next-line: function-name
 export function Colorfull() {
   function transformOutput(css, args) {
-    return args.reduce((agg, arg) => {
-      if (typeof arg === 'string' || typeof arg === 'number') {
-        return [...agg, `%c${arg}`, css];
-      }
-      return [...agg, arg];
-      // tslint:disable-next-line: align
-    }, []);
+    if (!css) {
+      return args;
+    }
+    return [`%c${args[0]} %s`, css, ...args.slice(1)];
   }
 
   return function (target?: any, propertyKey?: string | symbol, descriptor?: PropertyDescriptor) {
