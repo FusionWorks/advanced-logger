@@ -1,4 +1,4 @@
-name: CI mock
+name: CI mock trigger
 
 on: [push]
 
