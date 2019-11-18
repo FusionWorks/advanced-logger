@@ -1,0 +1,40 @@
+# GitHub Actions docs
+# https://help.github.com/en/articles/about-github-actions
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+name: CI
+
+on:
+  pull_request:
+    branches:
+    - master
+    - develop
+  push:
+    branches: 
+      - develop
+      - master
+
+jobs:
+  build:
+    # Machine environment:
+    # https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions#ubuntu-1804-lts
+    # We specify the Node.js version manually below, and use versioned Chrome from Puppeteer.
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.8
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.8
+    - name: npm install
+      working-directory: frontend
+      run: |
+        npm install
+    - name: Build Prod
+      working-directory: frontend
+      run: |
+        npm run build:prod --if-present
+    - name: Lint
+      working-directory: frontend
+      run: |
+        npm run lint
